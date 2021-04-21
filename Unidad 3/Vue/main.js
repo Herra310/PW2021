@@ -28,6 +28,9 @@ const app = Vue.createApp({
 
             this.cantidadTotal = this.frutas2.reduce((sum, f) => (sum +f.cantidad), 0);
             return this.cantidadTotal;
-        }   
+        },   
+        colorCantidad(){
+            return this.sumarFruta > 20 ? 'text-success' : 'text-danger';
+        }
     }
 });
