@@ -1,22 +1,24 @@
 <template>
-  <div>
+  <div class="m-4">
       <Maintitle texto="Peliculas"/>
-      <div
+      <Card
       v-for="p in peliculas"
       :key="p.id"
-      >
-      {{p.title}}
-      </div>
+      :titulo="p.title"
+      :id="p.id"
+      />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Maintitle from '../components/maintitle'
+import Card from '../components/Card'
 
 export default {
   components: { 
-    Maintitle
+    Maintitle,
+    Card
   },
   data() {
     return{
@@ -45,7 +47,7 @@ export default {
     }
   },
   created(){
-    // metodos y datos cargados si
+    // metodos y datos cargados y asi
       this.consumirPeliculas();
   }
 }
