@@ -1,7 +1,17 @@
 <template>
   <div>
-    <label for="id"> </label>
-    <input class="form-control" :id="id" :value="value" :type="tipo" :maxlength="maxlength" :disabled="dis" :placeholder="placeholder"/>
+    <label :for="id">{{ titulo }}</label>
+    <input
+      class="form-control"
+      :id="id"
+      :value="value"
+      :type="tipo"
+      :maxlength="maxlength"
+      :disabled="dis"
+      :placeholder="placeholder"
+      @input="$emit('input', $event.target.value)"
+    />
+    <span v-if="error" class="text-danger">{{ mensajeError }}</span>
   </div>
 </template>
 
@@ -20,17 +30,25 @@ export default {
       default: "text",
     },
     maxlength: {
-        type:Number,
-        default: 100
+      type: Number,
+      default: 100,
     },
     dis: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
-    placeholder:{
-        type:String,
-        default: "Escribe aqui weon",
-    }
+    placeholder: {
+      type: String,
+      default: "Escribe aqui weon",
+    },
+    mensajeError: {
+      type: String,
+      default: "Campo obligatorio",
+    },
+    error: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
